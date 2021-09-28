@@ -1,0 +1,6 @@
+.icon-Notifications::before,.icon-notifications::before{
+	content: "\f0f3";
+}
+.icon-Application::before,.icon-application::before{
+	content: "\f2d2";
+}
