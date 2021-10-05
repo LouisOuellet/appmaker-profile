@@ -21,7 +21,7 @@ if(is_file(dirname(__FILE__) . '/dist/data/manifest.json')){
   $manifest = fopen(dirname(__FILE__) . '/dist/data/manifest.json', 'w');
   fwrite($manifest, json_encode($settings, JSON_PRETTY_PRINT));
   fclose($manifest);
-  $gitignore = fopen(dirname(__FILE__) . '.gitignore', 'w');
+  $gitignore = fopen(dirname(__FILE__) . '/.gitignore', 'w');
   fwrite($gitignore, ".DS_Store\n*.DS_Store\n");
   fclose($gitignore);
   echo "Repository has been setup\n";
