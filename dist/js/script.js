@@ -219,10 +219,7 @@ API.Plugins.profile = {
 							autoWidth: true,
 							processing: true,
 							scrolling: false,
-							buttons: [
-								{ extend: 'selectAll' },
-								{ extend: 'selectNone' },
-							],
+							buttons: [],
 							language: {
 								buttons: {
 									selectAll: API.Contents.Language["All"],
@@ -238,6 +235,32 @@ API.Plugins.profile = {
 							},
 							order: [[ 1, "asc" ]]
 						});
+						if(API.Auth.validate('button', 'selectNone', 1)){
+							ctrlTxt = '<i class="icon icon-none mr-1"></i>'+API.Contents.Language['None'];
+							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectNone' });
+						}
+						if(API.Auth.validate('button', 'selectAll', 1)){
+							ctrlTxt = '<i class="icon icon-all mr-1"></i>'+API.Contents.Language['All'];
+							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectAll' });
+						}
+						if(API.Auth.validate('button', 'add', 1)){
+							ctrlTxt = '<i class="icon icon-add mr-1"></i>'+API.Contents.Language['Add'];
+							table.DataTable().button().add(0,{
+								text: ctrlTxt,
+								action: function(){
+									// Add Subscription
+								}
+							});
+						}
+						if(API.Auth.validate('button', 'delete', 1)){
+							ctrlTxt = '<i class="icon icon-delete mr-1"></i>'+API.Contents.Language['Delete'];
+							table.DataTable().button().add(0,{
+								text: ctrlTxt,
+								action: function(){
+									// Remove Subscription
+								}
+							});
+						}
 					});
 				}
 			});
