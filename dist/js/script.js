@@ -199,7 +199,6 @@ API.Plugins.profile = {
 					});
 					// Notifications
 					API.Plugins.profile.Settings.Tabs.add('Notifications',function(tab,header){
-						console.log(data.output.details.subscriptions);
 						tab.html('<div class="table-responsive"><table class="table dt-responsive table-hover table-bordered" style="width:100%"><thead class="thead-dark"></thead></table></div>');
 						var table = tab.find('table');
 						var cols = [];
@@ -248,7 +247,7 @@ API.Plugins.profile = {
 							table.DataTable().button().add(0,{
 								text: ctrlTxt,
 								action: function(){
-									// Add Subscription
+									console.log("Add a subsciption");
 								}
 							});
 						}
@@ -257,7 +256,7 @@ API.Plugins.profile = {
 							table.DataTable().button().add(0,{
 								text: ctrlTxt,
 								action: function(){
-									// Remove Subscription
+									console.log("Remove a subsciption");
 								}
 							});
 						}
