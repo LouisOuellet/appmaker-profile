@@ -199,6 +199,7 @@ API.Plugins.profile = {
 					});
 					// Notifications
 					API.Plugins.profile.Settings.Tabs.add('Notifications',function(tab,header){
+						console.log(data.output.details.subscriptions);
 						tab.html('<div class="table-responsive"><table class="table dt-responsive table-hover table-bordered" style="width:100%"><thead class="thead-dark"></thead></table></div>');
 						var table = tab.find('table');
 						var cols = [];
