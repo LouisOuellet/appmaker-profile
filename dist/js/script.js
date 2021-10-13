@@ -206,7 +206,34 @@ API.Plugins.profile = {
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
 						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
-						table.DataTable();
+						table.DataTable({
+							data:data.output.subscriptions,
+							searching: true,
+							paging: true,
+							pageLength: 10,
+							lengthChange: true,
+							lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+							ordering: true,
+							info: true,
+							autoWidth: true,
+							processing: true,
+							scrolling: false,
+							buttons: [],
+							language: {
+								buttons: {
+									selectAll: API.Contents.Language["All"],
+									selectNone: API.Contents.Language["None"],
+								},
+								info: ", Total _TOTAL_ entries",
+							},
+							dom: '<"dtbl-toolbar"Bf>rt<"dtbl-btoolbar"lip>',
+							// columnDefs: cols,
+							select: {
+								style: 'multi',
+								selector: 'td:first-child'
+							},
+							order: [[ 1, "asc" ]]
+						});
 						// for(var [key, subscription] of Object.entries(data.output.subscriptions)){
 						// 	table.DataTable().row.add({ category:subscription.category, sub_category:subscription.sub_category }).draw(false);
 						// }
