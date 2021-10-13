@@ -247,9 +247,6 @@ API.Plugins.profile = {
 							table.DataTable().button().add(0,{
 								text: ctrlTxt,
 								action: function(){
-									console.log("Add a subsciption");
-									console.log(data.output.categories);
-									console.log(data.output.sub_categories);
 									API.Builder.modal($('body'), {
 										title:'Select a subscription',
 										icon:'question',
