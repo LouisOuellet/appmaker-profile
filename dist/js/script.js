@@ -125,7 +125,6 @@ API.Plugins.profile = {
 			API.request('users','get',{data:{id:API.Contents.Auth.User.id}},function(result){
 				var data = JSON.parse(result);
 				if(data.success != undefined){
-					console.log(data);
 					API.Plugins.profile.Tabs.init();
 					// Application Settings
 					API.Plugins.profile.Settings.Tabs.add('Application',function(tab,header){});
@@ -295,6 +294,10 @@ API.Plugins.profile = {
 								text: ctrlTxt,
 								action: function(){
 									console.log("Remove a subsciption");
+									table.DataTable().rows( { selected: true } ).every(function(){
+										var key = this.data();
+										console.log(key);
+									});
 								}
 							});
 						}
