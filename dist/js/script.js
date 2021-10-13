@@ -277,7 +277,6 @@ API.Plugins.profile = {
 											API.request('users','subscribe',{data:{category:category,sub_category:sub_category}},function(result){
 												json = JSON.parse(result);
 												if(json.success != undefined){
-													console.log(json);
 													table.DataTable().row.add({ category:json.output.subscription.category, sub_category:json.output.subscription.sub_category }).draw(false);
 												}
 											});
