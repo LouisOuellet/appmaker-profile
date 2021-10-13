@@ -297,14 +297,10 @@ API.Plugins.profile = {
 									table.DataTable().rows( { selected: true } ).every(function(){
 										var row = this;
 										var subscription = row.data();
-										console.log(row);
-										row.remove().draw(false);
-										// API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
-										// 	json = JSON.parse(result);
-										// 	if(json.success != undefined){
-										// 		table.DataTable().row.add({ category:json.output.subscription.category, sub_category:json.output.subscription.sub_category }).draw(false);
-										// 	}
-										// });
+										API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
+											json = JSON.parse(result);
+											if(json.success != undefined){ row.remove().draw(false); }
+										});
 									});
 								}
 							});
