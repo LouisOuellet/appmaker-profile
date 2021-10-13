@@ -278,16 +278,16 @@ API.Plugins.profile = {
 										footer.find('button').off().click(function(){
 											var category = body.find("#category").select2('data')[0].element.value;
 											var sub_category = body.find("#sub_category").select2('data')[0].element.value;
-											console.log(category);
-											console.log(sub_category);
+											API.request('users','subscribe',{data:{category:category,sub_category:sub_category}},function(result){
+												json = JSON.parse(result);
+												if(json.success != undefined){
+													console.log(json);
+												}
+											});
+											modal.modal('hide');
 										});
 										modal.modal('show');
 									});
-									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
-									// 	json = JSON.parse(result);
-									// 	if(json.success != undefined){
-									// 	}
-									// });
 								}
 							});
 						}
