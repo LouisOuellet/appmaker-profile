@@ -226,7 +226,7 @@ API.Plugins.profile = {
 								info: ", Total _TOTAL_ entries",
 							},
 							dom: '<"dtbl-toolbar"Bf>rt<"dtbl-btoolbar"lip>',
-							columnDefs: cols,
+							// columnDefs: cols,
 							select: {
 								style: 'multi',
 								selector: 'td:first-child'
