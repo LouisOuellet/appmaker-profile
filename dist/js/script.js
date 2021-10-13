@@ -298,10 +298,8 @@ API.Plugins.profile = {
 										API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
 											json = JSON.parse(result);
 											if(json.success != undefined){
-												console.log(json.output.subscription);
 												table.DataTable().rows( { selected: true } ).every(function(){
 													if(this.data().category == json.output.subscription.category && this.data().sub_category == json.output.subscription.sub_category){
-														console.log(this.data());
 														this.remove().draw(false);
 													}
 												});
