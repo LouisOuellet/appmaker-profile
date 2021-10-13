@@ -205,6 +205,7 @@ API.Plugins.profile = {
 						var cols = [];
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
+						cols.push({ "defaultContent": "-", "targets": "_all" });
 						table.DataTable({
 							data: data.output.subscriptions,
 							searching: true,
