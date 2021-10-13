@@ -207,9 +207,7 @@ API.Plugins.profile = {
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
 						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
 						if(!API.Helper.isSet(data.output,['subscriptions'])){ API.Helper.set(data.output,['subscriptions'],[]); }
-						console.log(data.output.subscriptions);
 						table.DataTable({
-							data: data.output.subscriptions,
 							searching: true,
 							paging: true,
 							pageLength: 10,
@@ -236,6 +234,9 @@ API.Plugins.profile = {
 							},
 							order: [[ 1, "asc" ]]
 						});
+						for(var [key, subscription] of Object.entries(data.output.subscriptions)){
+							table.DataTable().row.add({ category:subscription.category, sub_category:subscription.sub_category }).draw(false);
+						}
 						if(API.Auth.validate('button', 'selectNone', 1)){
 							ctrlTxt = '<i class="icon icon-none mr-1"></i>'+API.Contents.Language['None'];
 							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectNone' });
