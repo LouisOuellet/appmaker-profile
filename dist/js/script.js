@@ -248,6 +248,19 @@ API.Plugins.profile = {
 								text: ctrlTxt,
 								action: function(){
 									console.log("Add a subsciption");
+									console.log(data.output.categories);
+									console.log(data.output.sub_categories);
+									// API.Builder.modal($('body'), {
+									// 	title:'Please explain why you are canceling the call',
+									// 	icon:'question',
+									// 	zindex:'top',
+									// 	css:{ dialog:"modal-lg",header:"bg-danger",body:'p-0'},
+									// }, function(modal){});
+									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
+									// 	json = JSON.parse(result);
+									// 	if(json.success != undefined){
+									// 	}
+									// });
 								}
 							});
 						}
