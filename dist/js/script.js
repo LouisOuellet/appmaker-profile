@@ -298,7 +298,14 @@ API.Plugins.profile = {
 										var subscription = row.data();
 										API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
 											json = JSON.parse(result);
-											if(json.success != undefined){ row.remove().draw(false); }
+											if(json.success != undefined){
+												table.DataTable().rows( { selected: true } ).every(function(){
+													var subscription = this.data();
+													if(subscription.category == json.output.subscription.category && subscription.sub_category == json.output.subscription.sub_category){
+														this.remove().draw(false);
+													}
+												}
+											}
 										});
 									});
 								}
