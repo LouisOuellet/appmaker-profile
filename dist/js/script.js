@@ -203,7 +203,7 @@ API.Plugins.profile = {
 						tab.html('<div class="table-responsive"><table class="table dt-responsive table-hover table-bordered" style="width:100%"><thead class="thead-dark"></thead></table></div>');
 						var table = tab.find('table');
 						var cols = [];
-						cols.push({ defaultContent:"-", targets: "_all" });
+						cols.push({ name: "select", title: "", data: "select", width: "25px", defaultContent: '', targets: 0, orderable: false, className: 'select-checkbox'});
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
 						table.DataTable({
