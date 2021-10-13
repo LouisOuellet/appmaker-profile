@@ -280,6 +280,7 @@ API.Plugins.profile = {
 												json = JSON.parse(result);
 												if(json.success != undefined){
 													console.log(json);
+													table.DataTable().row.add({ category:json.output.subscription.category, sub_category:json.output.subscription.sub_category }).draw(false);
 												}
 											});
 											modal.modal('hide');
