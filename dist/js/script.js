@@ -275,6 +275,12 @@ API.Plugins.profile = {
 										html += '</div>';
 										body.html(html);
 										body.find('select').select2({ theme: 'bootstrap4' });
+										footer.find('button').off().click(function(){
+											var category = body.find("#category")..select2('data')[0].element.value;
+											var sub_category = body.find("#sub_category").select2('data')[0].element.value;
+											console.log(category);
+											console.log(sub_category);
+										});
 										modal.modal('show');
 									});
 									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
