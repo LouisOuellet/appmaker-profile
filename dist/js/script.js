@@ -204,6 +204,7 @@ API.Plugins.profile = {
 						var cols = [];
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
+						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
 						if(!API.Helper.isSet(data.output.details,['subscriptions','dom'])){ API.Helper.set(data.output.details,['subscriptions','dom'],[]); }
 						if(!API.Helper.isSet(data.output.details,['subscriptions','raw'])){ API.Helper.set(data.output.details,['subscriptions','raw'],[]); }
 						table.DataTable({
@@ -277,9 +278,8 @@ API.Plugins.profile = {
 											var sub_category = body.find("#sub_category").select2('data')[0].element.value;
 											API.request('users','subscribe',{data:{category:category,sub_category:sub_category}},function(result){
 												json = JSON.parse(result);
-												console.log(json);
 												if(json.success != undefined){
-													console.log("Success!");
+													console.log(json);
 												}
 											});
 											modal.modal('hide');
