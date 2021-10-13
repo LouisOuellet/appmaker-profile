@@ -205,8 +205,11 @@ API.Plugins.profile = {
 						var cols = [];
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
+						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
+						if(!API.Helper.isSet(data.output,['subscriptions'])){ API.Helper.set(data.output,['subscriptions'],[]); }
+						console.log(data.output.subscriptions);
 						table.DataTable({
-							data:data.output.subscriptions,
+							data: data.output.subscriptions,
 							searching: true,
 							paging: true,
 							pageLength: 10,
@@ -233,70 +236,70 @@ API.Plugins.profile = {
 							},
 							order: [[ 1, "asc" ]]
 						});
-						// if(API.Auth.validate('button', 'selectNone', 1)){
-						// 	ctrlTxt = '<i class="icon icon-none mr-1"></i>'+API.Contents.Language['None'];
-						// 	table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectNone' });
-						// }
-						// if(API.Auth.validate('button', 'selectAll', 1)){
-						// 	ctrlTxt = '<i class="icon icon-all mr-1"></i>'+API.Contents.Language['All'];
-						// 	table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectAll' });
-						// }
-						// if(API.Auth.validate('button', 'add', 1)){
-						// 	ctrlTxt = '<i class="icon icon-add mr-1"></i>'+API.Contents.Language['Add'];
-						// 	table.DataTable().button().add(0,{
-						// 		text: ctrlTxt,
-						// 		action: function(){
-						// 			API.Builder.modal($('body'), {
-						// 				title:'Select a subscription',
-						// 				icon:'question',
-						// 				zindex:'top',
-						// 				css:{ dialog:"",header:"bg-info",body:""},
-						// 			}, function(modal){
-						// 				var dialog = modal.find('.modal-dialog');
-						// 				var header = modal.find('.modal-header');
-						// 				var body = modal.find('.modal-body');
-						// 				var footer = modal.find('.modal-footer');
-						// 				var html = "";
-						// 				header.find('button[data-control="hide"]').remove();
-						// 				header.find('button[data-control="update"]').remove();
-						// 				footer.append('<button type="submit" class="btn btn-info"><i class="icon icon-hide mr-1"></i>'+API.Contents.Language['Add']+'</button>');
-						// 				html += '<div class="input-group">';
-						// 					html += '<div class="input-group-prepend"><span class="input-group-text"><i class="icon icon-subscriptions mr-1"></i>'+API.Contents.Language['Subscriptions']+'</span></div>';
-						// 					html += '<select id="category" name="category" class="form-control">';
-						// 						for(var [key, category] of Object.entries(data.output.categories)){ html += '<option value="'+category.name+'">'+API.Helper.ucfirst(category.name)+'</option>'; }
-						// 					html += '</select>';
-						// 					html += '<select id="sub_category" name="sub_category" class="form-control">';
-						// 						for(var [key, sub_category] of Object.entries(data.output.sub_categories)){ html += '<option value="'+sub_category.name+'">'+API.Helper.ucfirst(sub_category.name)+'</option>'; }
-						// 					html += '</select>';
-						// 				html += '</div>';
-						// 				body.html(html);
-						// 				body.find('select').select2({ theme: 'bootstrap4' });
-						// 				footer.find('button').off().click(function(){
-						// 					var category = body.find("#category").select2('data')[0].element.value;
-						// 					var sub_category = body.find("#sub_category").select2('data')[0].element.value;
-						// 					API.request('users','subscribe',{data:{category:category,sub_category:sub_category}},function(result){
-						// 						json = JSON.parse(result);
-						// 						if(json.success != undefined){
-						// 							console.log(json);
-						// 							table.DataTable().row.add({ category:json.output.subscription.category, sub_category:json.output.subscription.sub_category }).draw(false);
-						// 						}
-						// 					});
-						// 					modal.modal('hide');
-						// 				});
-						// 				modal.modal('show');
-						// 			});
-						// 		}
-						// 	});
-						// }
-						// if(API.Auth.validate('button', 'delete', 1)){
-						// 	ctrlTxt = '<i class="icon icon-delete mr-1"></i>'+API.Contents.Language['Delete'];
-						// 	table.DataTable().button().add(0,{
-						// 		text: ctrlTxt,
-						// 		action: function(){
-						// 			console.log("Remove a subsciption");
-						// 		}
-						// 	});
-						// }
+						if(API.Auth.validate('button', 'selectNone', 1)){
+							ctrlTxt = '<i class="icon icon-none mr-1"></i>'+API.Contents.Language['None'];
+							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectNone' });
+						}
+						if(API.Auth.validate('button', 'selectAll', 1)){
+							ctrlTxt = '<i class="icon icon-all mr-1"></i>'+API.Contents.Language['All'];
+							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectAll' });
+						}
+						if(API.Auth.validate('button', 'add', 1)){
+							ctrlTxt = '<i class="icon icon-add mr-1"></i>'+API.Contents.Language['Add'];
+							table.DataTable().button().add(0,{
+								text: ctrlTxt,
+								action: function(){
+									API.Builder.modal($('body'), {
+										title:'Select a subscription',
+										icon:'question',
+										zindex:'top',
+										css:{ dialog:"",header:"bg-info",body:""},
+									}, function(modal){
+										var dialog = modal.find('.modal-dialog');
+										var header = modal.find('.modal-header');
+										var body = modal.find('.modal-body');
+										var footer = modal.find('.modal-footer');
+										var html = "";
+										header.find('button[data-control="hide"]').remove();
+										header.find('button[data-control="update"]').remove();
+										footer.append('<button type="submit" class="btn btn-info"><i class="icon icon-hide mr-1"></i>'+API.Contents.Language['Add']+'</button>');
+										html += '<div class="input-group">';
+											html += '<div class="input-group-prepend"><span class="input-group-text"><i class="icon icon-subscriptions mr-1"></i>'+API.Contents.Language['Subscriptions']+'</span></div>';
+											html += '<select id="category" name="category" class="form-control">';
+												for(var [key, category] of Object.entries(data.output.categories)){ html += '<option value="'+category.name+'">'+API.Helper.ucfirst(category.name)+'</option>'; }
+											html += '</select>';
+											html += '<select id="sub_category" name="sub_category" class="form-control">';
+												for(var [key, sub_category] of Object.entries(data.output.sub_categories)){ html += '<option value="'+sub_category.name+'">'+API.Helper.ucfirst(sub_category.name)+'</option>'; }
+											html += '</select>';
+										html += '</div>';
+										body.html(html);
+										body.find('select').select2({ theme: 'bootstrap4' });
+										footer.find('button').off().click(function(){
+											var category = body.find("#category").select2('data')[0].element.value;
+											var sub_category = body.find("#sub_category").select2('data')[0].element.value;
+											API.request('users','subscribe',{data:{category:category,sub_category:sub_category}},function(result){
+												json = JSON.parse(result);
+												if(json.success != undefined){
+													console.log(json);
+													table.DataTable().row.add({ category:json.output.subscription.category, sub_category:json.output.subscription.sub_category }).draw(false);
+												}
+											});
+											modal.modal('hide');
+										});
+										modal.modal('show');
+									});
+								}
+							});
+						}
+						if(API.Auth.validate('button', 'delete', 1)){
+							ctrlTxt = '<i class="icon icon-delete mr-1"></i>'+API.Contents.Language['Delete'];
+							table.DataTable().button().add(0,{
+								text: ctrlTxt,
+								action: function(){
+									console.log("Remove a subsciption");
+								}
+							});
+						}
 					});
 				}
 			});
