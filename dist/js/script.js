@@ -298,7 +298,7 @@ API.Plugins.profile = {
 										var row = this;
 										var subscription = row.data();
 										console.log(row);
-										row.remove();
+										row.remove().draw(false);
 										// API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
 										// 	json = JSON.parse(result);
 										// 	if(json.success != undefined){
