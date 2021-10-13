@@ -274,6 +274,7 @@ API.Plugins.profile = {
 											html += '</select>';
 										html += '</div>';
 										body.html(html);
+										modal.modal('show');
 									});
 									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
 									// 	json = JSON.parse(result);
