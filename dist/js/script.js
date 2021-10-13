@@ -206,8 +206,8 @@ API.Plugins.profile = {
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
 						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
-						if(!API.Helper.isSet(data.output.details,['subscriptions','dom'])){ API.Helper.set(data.output.details,['subscriptions','dom'],[]); }
-						if(!API.Helper.isSet(data.output.details,['subscriptions','raw'])){ API.Helper.set(data.output.details,['subscriptions','raw'],[]); }
+						if(!API.Helper.isSet(data.output,['subscriptions'])){ API.Helper.set(data.output,['subscriptions'],[]); }
+						console.log(data.output.subscriptions);
 						table.DataTable({
 							data: data.output.subscriptions,
 							searching: true,
