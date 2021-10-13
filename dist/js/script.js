@@ -205,7 +205,7 @@ API.Plugins.profile = {
 						var cols = [];
 						cols.push({ name: "Category", title: "Category", data: "category", defaultContent: '', targets: 1 });
 						cols.push({ name: "Sub Category", title: "Sub Category", data: "sub_category", defaultContent: '', targets: 2 });
-						cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
+						// cols.push({ name: "Remove", title: "Remove", data: "remove", defaultContent: '<button class="btn btn-sm btn-danger"><i class="fas fa-bell"></i></button>', targets: 3 });
 						table.DataTable({
 							data:data.output.subscriptions,
 							searching: true,
@@ -227,7 +227,7 @@ API.Plugins.profile = {
 								info: ", Total _TOTAL_ entries",
 							},
 							dom: '<"dtbl-toolbar"Bf>rt<"dtbl-btoolbar"lip>',
-							// columnDefs: cols,
+							columnDefs: cols,
 							select: {
 								style: 'multi',
 								selector: 'td:first-child'
