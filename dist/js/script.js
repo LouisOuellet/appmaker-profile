@@ -304,7 +304,7 @@ API.Plugins.profile = {
 													if(subscription.category == json.output.subscription.category && subscription.sub_category == json.output.subscription.sub_category){
 														this.remove().draw(false);
 													}
-												}
+												});
 											}
 										});
 									});
