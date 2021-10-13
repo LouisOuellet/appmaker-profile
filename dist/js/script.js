@@ -292,16 +292,16 @@ API.Plugins.profile = {
 							table.DataTable().button().add(0,{
 								text: ctrlTxt,
 								action: function(){
-									console.log("Remove a subsciption");
 									table.DataTable().rows( { selected: true } ).every(function(){
 										var row = this;
 										var subscription = row.data();
 										API.request('users','unsubscribe',{data:{category:subscription.category,sub_category:subscription.sub_category}},function(result){
 											json = JSON.parse(result);
 											if(json.success != undefined){
+												console.log(json.output.subscription);
 												table.DataTable().rows( { selected: true } ).every(function(){
-													var subscription = this.data();
-													if(subscription.category == json.output.subscription.category && subscription.sub_category == json.output.subscription.sub_category){
+													if(this.data().category == json.output.subscription.category && this.data().sub_category == json.output.subscription.sub_category){
+														console.log(this.data());
 														this.remove().draw(false);
 													}
 												});
