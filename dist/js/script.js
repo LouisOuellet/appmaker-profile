@@ -250,12 +250,31 @@ API.Plugins.profile = {
 									console.log("Add a subsciption");
 									console.log(data.output.categories);
 									console.log(data.output.sub_categories);
-									// API.Builder.modal($('body'), {
-									// 	title:'Please explain why you are canceling the call',
-									// 	icon:'question',
-									// 	zindex:'top',
-									// 	css:{ dialog:"modal-lg",header:"bg-danger",body:'p-0'},
-									// }, function(modal){});
+									API.Builder.modal($('body'), {
+										title:'Select a subscription',
+										icon:'question',
+										zindex:'top',
+										css:{ dialog:"",header:"bg-info",body:""},
+									}, function(modal){
+										var dialog = modal.find('.modal-dialog');
+										var header = modal.find('.modal-header');
+										var body = modal.find('.modal-body');
+										var footer = modal.find('.modal-footer');
+										var html = "";
+										header.find('button[data-control="hide"]').remove();
+										header.find('button[data-control="update"]').remove();
+										footer.append('<button type="submit" class="btn btn-info"><i class="icon icon-hide mr-1"></i>'+API.Contents.Language['Add']+'</button>');
+										html += '<div class="input-group">';
+											html += '<div class="input-group-prepend"><span class="input-group-text"><i class="icon icon-subscriptions mr-1"></i>'+API.Contents.Language['Subscriptions']+'</span></div>';
+											html += '<select id="category" name="category" class="form-control">';
+												for(var [key, category] of Object.entries(data.output.categories)){ html += '<option value="'+category.name+'">'+API.Helper.ucfirst(category.name)+'</option>'; }
+											html += '</select>';
+											html += '<select id="sub_category" name="sub_category" class="form-control">';
+												for(var [key, sub_category] of Object.entries(data.output.sub_categories)){ html += '<option value="'+sub_category.name+'">'+API.Helper.ucfirst(sub_category.name)+'</option>'; }
+											html += '</select>';
+										html += '</div>';
+										body.html(html);
+									});
 									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
 									// 	json = JSON.parse(result);
 									// 	if(json.success != undefined){
