@@ -274,6 +274,7 @@ API.Plugins.profile = {
 											html += '</select>';
 										html += '</div>';
 										body.html(html);
+										body.find('select').select2({ theme: 'bootstrap4' });
 										modal.modal('show');
 									});
 									// API.request('users','subscribe',{data:{category:'category',sub_category:'sub_category'}},function(result){
