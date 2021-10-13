@@ -233,9 +233,9 @@ API.Plugins.profile = {
 							},
 							order: [[ 1, "asc" ]]
 						});
-						for(var [key, subscription] of Object.entries(data.output.subscriptions)){
-							table.DataTable().row.add({ category:subscription.category, sub_category:subscription.sub_category }).draw(false);
-						}
+						// for(var [key, subscription] of Object.entries(data.output.subscriptions)){
+						// 	table.DataTable().row.add({ category:subscription.category, sub_category:subscription.sub_category }).draw(false);
+						// }
 						if(API.Auth.validate('button', 'selectNone', 1)){
 							ctrlTxt = '<i class="icon icon-none mr-1"></i>'+API.Contents.Language['None'];
 							table.DataTable().button().add(0,{ text: ctrlTxt, extend: 'selectNone' });
