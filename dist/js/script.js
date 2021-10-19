@@ -135,13 +135,12 @@ API.Plugins.profile = {
 							ProfileWidgetLocation:['Navbar','Sidebar'],
 							landingPage:[],
 							callWidgetLocation:['topLeft','topLeft','bottomRight','bottomLeft'],
+							callStatus:['calls','issues'],
 						};
 						for(var [plugin, status] of Object.entries(API.Contents.Plugins)){ lists.landingPage.push(plugin); }
 						var count = 0, printcount = 0;
 						for(var [key, value] of Object.entries(API.Contents.Settings.customization)){
-							console.log(API.Contents.Settings.customization);
 							if(!['pace','logobg','nav','navmode','sidenav','sidenavmode'].includes(key)){
-								console.log(key);
 								++count;
 								if(API.Helper.isSet(API.Contents.Auth.Options,['application',key,'value'])){ value.value = API.Contents.Auth.Options.application[key].value; }
 								API.Builder.input(tab,key,value.value,{type:value.type,list:lists,icon:'fas fa-cog'},function(input){
