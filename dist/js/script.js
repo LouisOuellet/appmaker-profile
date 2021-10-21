@@ -108,7 +108,7 @@ API.Plugins.profile = {
 							var data = JSON.parse(result);
 							if(data.success != undefined){
 								API.Contents.Auth.User.name = '';
-								for(var [key, value] of Object.entries(data.output.results)){
+								for(var [key, value] of Object.entries(data.output.dom)){
 									if(!skipKey.includes(key)){ API.Contents.Auth.User[key] = value; }
 									if(((key == 'first_name')||(key == 'middle_name')||(key == 'last_name'))&&(value != '')&&(value != null)){
 										if(API.Contents.Auth.User.name != ''){ API.Contents.Auth.User.name += ' '; }
@@ -188,7 +188,7 @@ API.Plugins.profile = {
 										var data = JSON.parse(result);
 										if(typeof data.success !== 'undefined'){
 											console.log(data);
-											for(var [key, parameter] of Object.entries(data.output.results)){
+											for(var [key, parameter] of Object.entries(data.output.dom)){
 												API.Helper.set(API.Contents.Settings,['customization',parameter.name,'value'],parameter.value);
 											}
 											if(API.Contents.Settings.customization.darkmode.value){ $('body').removeClass('dark-mode');$('body').addClass('dark-mode'); } else { $('body').removeClass('dark-mode'); }
