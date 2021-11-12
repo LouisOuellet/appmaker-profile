@@ -1,7 +1,7 @@
 {
     "repository": {
         "name": "appmaker-profile",
-        "branch": "stable",
+        "branch": "dev",
         "manifest": "\/dist\/data\/manifest.json",
         "host": {
             "git": "https:\/\/github.com\/LouisOuellet\/",
@@ -14,6 +14,6 @@
         ]
     },
     "name": "profile",
-    "build": 109,
-    "version": "21.11-stable"
+    "build": 110,
+    "version": "21.11-dev"
 }
